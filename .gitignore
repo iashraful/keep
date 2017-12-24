@@ -12,3 +12,6 @@ yarn-error.log*
 *.ntvs*
 *.njsproj
 *.sln
+
+# API files that are ignored
+api/config/db_config.php

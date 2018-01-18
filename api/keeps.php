@@ -72,13 +72,17 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
 }
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $response = ["status" => "[POST] Under Construction."];
-    echo json_encode($response);
+    $data = json_decode(file_get_contents('php://input'), true);
+    $note = $data['note'];
+    add_note($note);
 }
 
 if($_SERVER['REQUEST_METHOD'] == 'PUT') {
-    $response = ["status" => "[PUT] Under Construction."];
-    echo json_encode($response);
+    $data = json_decode(file_get_contents('php://input'), true);
+    $id = $data['id'];
+    $note = $data['note'];
+    $is_checked = $data['is_checked'];
+    update_note($id, $note, $is_checked);
 }
 
 ?>

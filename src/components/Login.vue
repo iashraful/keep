@@ -9,7 +9,9 @@
 			return {
 				username: "",
 				password: "",
-				loginState: localStorage.getItem('login') || false,
+				loginState: localStorage.getItem('login') == 'true' ? true : false,
+				errorMsg: "",
+				loginStatus: true
 			}
 		},
 		methods: {
@@ -29,15 +31,21 @@
 					this.loginState = data.login;
 					if(data.login) {
 						localStorage.setItem('user', String(data.user));
-						localStorage.setItem('login', true);
-						this.$router.push('/');
+						localStorage.setItem('login', 'true');
+						// this.$router.push('/');
+						window.location = "/"
+					}
+					else {
+						this.errorMsg = data.message
+						this.loginStatus = data.login
 					}
 				})
 			}
 		},
 		created: function() {
 			if (this.loginState) {
-				this.$router.push('/');
+				// this.$router.push('/');
+				window.location = "/"
 			}
 		}
 	}

@@ -37,3 +37,11 @@ span.psw {
   float: right;
   padding-top: 16px;
 }
+
+.error-alert {
+  border: black solid 1px;
+  padding: 10px;
+  background-color: #e4036bb8;
+  color: #ffffff;
+  border-radius: 5px;
+}

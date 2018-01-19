@@ -1,15 +1,15 @@
 <template>
   <div id="app">
   	<ul>
-	  <li class="brand"><a href="/#/">Ashraful's Keep</a></li>
-	  <li>
-	  	<div class="search">
-		    <input class="search-input" type="text" placeholder="Search.." name="search">
-		 </div>
-	  </li>
-    <li v-show="!loginState"><a class="active" href="/#/login">Login</a></li>
-	  <li v-show="loginState"><a href="/#/logout">Logout</a></li>
-	</ul>
+  	  <li class="brand"><a href="/#/">Ashraful's Keep</a></li>
+  	  <li>
+  	  	<div class="search">
+  		    <input class="search-input" type="text" placeholder="Search.." name="search">
+  		 </div>
+  	  </li>
+      <li v-show="!loginState"><a class="active" href="/#/login">Login</a></li>
+  	  <li v-show="loginState"><a href="/#/logout">Logout</a></li>
+  	</ul>
     <router-view/>
   </div>
 </template>
@@ -19,7 +19,7 @@ export default {
   name: 'app',
   data() {
     return {
-      loginState: localStorage.getItem('login') || false
+      loginState: localStorage.getItem('login') == 'true' ? true : false
     }
   }
 }

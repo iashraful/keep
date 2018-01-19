@@ -1,14 +1,16 @@
 <div>
-  <h2 class="text-center">Please Login</h2>
-  <form v-on:submit.prevent="submitLogin">
-    <div class="container">
-      <label><b>Username</b></label>
-      <input class="login-input" type="text" placeholder="Enter Username" v-model="username" required>
+  <div v-show="!loginState">
+    <h2 class="text-center">Please Login</h2>
+    <form v-on:submit.prevent="submitLogin">
+      <div class="container">
+        <label><b>Username</b></label>
+        <input class="login-input" type="text" placeholder="Enter Username" v-model="username" required>
 
-      <label><b>Password</b></label>
-      <input class="login-input" type="password" placeholder="Enter Password" v-model="password" required>
-          
-      <button type="submit">Login</button>
-    </div>
-  </form>
+        <label><b>Password</b></label>
+        <input class="login-input" type="password" placeholder="Enter Password" v-model="password" required>
+            
+        <button type="submit">Login</button>
+      </div>
+    </form>
+  </div>
 </div>

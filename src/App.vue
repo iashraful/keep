@@ -7,7 +7,8 @@
 		    <input class="search-input" type="text" placeholder="Search.." name="search">
 		 </div>
 	  </li>
-	  <li><a class="active" href="/#/login">Login</a></li>
+    <li v-show="!loginState"><a class="active" href="/#/login">Login</a></li>
+	  <li v-show="loginState"><a href="/#/logout">Logout</a></li>
 	</ul>
     <router-view/>
   </div>
@@ -15,7 +16,12 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  data() {
+    return {
+      loginState: localStorage.getItem('login') || false
+    }
+  }
 }
 </script>
 

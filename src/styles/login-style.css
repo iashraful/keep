@@ -1,42 +1,32 @@
 form {
-    border: 3px solid #f1f1f1;
+  border: 3px solid #f1f1f1;
 }
 
 .login-input {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
 button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
 }
 
 button:hover {
-    opacity: 0.8;
-}
-
-.imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
-}
-
-img.avatar {
-    width: 10%;
-    border-radius: 20%;
+	opacity: 0.8;
 }
 
 .container {
-    padding: 0 30% 0 30%;
+   padding: 0 30% 0 30%;
 }
 
 .text-center {
@@ -44,6 +34,6 @@ img.avatar {
 }
 
 span.psw {
-    float: right;
-    padding-top: 16px;
+  float: right;
+  padding-top: 16px;
 }

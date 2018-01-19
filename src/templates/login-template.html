@@ -1,16 +1,12 @@
 <div>
   <h2 class="text-center">Please Login</h2>
-  <form action="#">
-    <div class="imgcontainer">
-      <img src="../assets/ashraful.jpg" alt="Avatar" class="avatar">
-    </div>
-
+  <form v-on:submit.prevent="submitLogin">
     <div class="container">
       <label><b>Username</b></label>
-      <input class="login-input" type="text" placeholder="Enter Username" name="uname" required>
+      <input class="login-input" type="text" placeholder="Enter Username" v-model="username" required>
 
       <label><b>Password</b></label>
-      <input class="login-input" type="password" placeholder="Enter Password" name="psw" required>
+      <input class="login-input" type="password" placeholder="Enter Password" v-model="password" required>
           
       <button type="submit">Login</button>
     </div>

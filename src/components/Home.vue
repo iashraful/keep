@@ -1,8 +1,4 @@
-<template>
-    <div class="home">
-        <h1 class="text-center">{{mgs}}</h1>
-    </div>
-</template>
+<template src="../templates/home-template.html"></template>
 
 
 <script>
@@ -16,8 +12,4 @@
     }
 </script>
 
-<style>
-    .text-center {
-        text-align: center
-    }
-</style>
+<style src="../styles/home-style.css"></style>

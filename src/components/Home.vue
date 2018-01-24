@@ -6,7 +6,7 @@
         name: "Home",
         data() {
             return {
-            		authenticated: true,
+            	authenticated: true,
                 // authenticated: localStorage.getItem('login') == 'true' ? true : false
                 note: "",
                 notes: [],
@@ -30,8 +30,42 @@
 				})
         	},
         	triggerCheckbox(id) {
-        		let isChecked = data.is_checked == 1 ? 0 : 1;
-        	}
+                let note = this.getObjectwithId(id);
+                let isChecked = note.is_checked == 1 ? 0 : 1;
+
+                const noteObj = {
+                    id: note.id,
+                    note: note.note,
+                    is_checked: isChecked
+                };
+
+                // Update the Note
+                const apiUrl = '/api/keeps.php';
+                const payload = {
+                    method: 'PUT',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(noteObj)
+                };
+                fetch(apiUrl, payload).then((response) => {
+                    return response.json();
+                }).then((data) => {
+                    this.updateObjectwithId(note.id, noteObj);
+                })
+        	},
+            getObjectwithId(id) {
+                for (let n=0; n<this.notes.length; n++) {
+                    if(id == this.notes[n].id) {
+                        return this.notes[n]
+                    }
+                }
+            },
+            updateObjectwithId(id, obj) {
+                for (let n=0; n<this.notes.length; n++) {
+                    if(id == this.notes[n].id) {
+                        this.notes.unshift(obj);
+                    }
+                }
+            }
         },
         created() {
         	// This will trigger when this component will mount.

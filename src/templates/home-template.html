@@ -8,16 +8,39 @@
 		<p class="text-center app-title">Ashraful's Keep</p>
 	</div>
 	<div class="note-display-area">
-		<input type="checkbox" class="note-checkbox" v-show="note"/> <span class="inline-note">{{ note }}</span>
-		<div v-for="data in notes">
+		<!-- (Until press Enter) Inline note will display from here -->
+		<input type="checkbox" class="note-checkbox" v-show="note"/> 
+		<span class="inline-note">{{ note }}</span>
+		<!-- (API) Data will display from here -->
+		<div v-for="data in notes" v-show="authenticated">
 			<input
 				v-bind:checked="data.is_checked == 1 ? true : false"
 				type="checkbox"
 				class="note-checkbox"
 				v-on:change="triggerCheckbox(data.id)"
-			/> 
+			/>
 			<span class="inline-note" v-show="data.is_checked == 1"><del>{{ data.note }}</del></span>
 			<span class="inline-note" v-show="data.is_checked == 0">{{ data.note }}</span>
+		</div>
+		<!-- Will show when !authenticated -->
+		<div v-show="!authenticated">
+			<ol>
+				<li 
+					v-for="data in notes" 
+					class="inline-note" 
+					v-show="data.is_checked == 1"
+				>
+					<del>{{ data.note }}</del>
+				</li>
+
+				<li 
+					v-for="data in notes" 
+					class="inline-note" 
+					v-show="data.is_checked == 0"
+				>
+					{{ data.note }}
+				</li>
+			</ol>
 		</div>
 	</div>
 </div>

@@ -15,20 +15,19 @@
         methods: {
         	noteSubmit() {
         		const apiUrl = '/api/keeps.php';
-						const payload = {
-							method: 'POST',
-							headers: {'Content-Type': 'application/json'},
-							body: JSON.stringify({
-								note: this.note
-							})
-						};
-						fetch(apiUrl, payload).then((response) => {
-							return response.json();
-						}).then((data) => {
-							if(data.status == 200) {
-								this.notes.unshift(data);
-							}
-						})
+				const payload = {
+					method: 'POST',
+					headers: {'Content-Type': 'application/json'},
+					body: JSON.stringify({
+						note: this.note
+					})
+				};
+				fetch(apiUrl, payload).then((response) => {
+					return response.json();
+				}).then((data) => {
+					this.notes.unshift(data);
+                    this.note = "";
+				})
         	},
         	triggerCheckbox(id) {
         		let isChecked = data.is_checked == 1 ? 0 : 1;
@@ -38,15 +37,15 @@
         	// This will trigger when this component will mount.
         	// Here will fetch all the notes from server
         	const apiUrl = '/api/keeps.php';
-					const payload = {
-						method: 'GET',
-						headers: {'Content-Type': 'application/json'},
-					};
-					fetch(apiUrl, payload).then((response) => {
-						return response.json();
-					}).then((data) => {
-						this.notes = data;
-					})
+			const payload = {
+				method: 'GET',
+				headers: {'Content-Type': 'application/json'},
+			};
+			fetch(apiUrl, payload).then((response) => {
+				return response.json();
+			}).then((data) => {
+				this.notes = data;
+			})
         }
     }
 </script>

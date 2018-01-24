@@ -1,3 +1,18 @@
 <div>
-	<h2 class="text-center">{{ mgs }}</h2>
+	<div class="note-input-area" v-show="authenticated">
+		<form v-on:submit.prevent="noteSubmit">
+			<input v-model="note" class="note-input" placeholder="Add some note here..." />
+		</form>
+	</div>
+	<div class="note-display-area">
+		<input type="checkbox" class="note-checkbox" v-show="note"/> <span class="inline-note">{{ note }}</span>
+		<div v-for="data in notes">
+			<input
+				type="checkbox"
+				class="note-checkbox"
+				v-on:change="triggerCheckbox(data.id)"
+			/> 
+			<span class="inline-note">{{ data.note }}</span>
+		</div>
+	</div>
 </div>

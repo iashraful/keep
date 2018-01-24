@@ -1,0 +1,35 @@
+.note-input-area {
+	margin-top: 70px;
+	position: absolute;
+  left: 32%;
+  z-index: 1;
+}
+
+.note-input {
+  width: 500px;
+  font-size: 20px;
+  background: #f1f1f1;
+  font: inherit;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .1);
+  border: 0;
+  outline: 0;
+	padding: 22px 18px;
+}
+
+.note-display-area {
+  padding-top: 150px;
+	position: relative;
+  left: 33%;
+  width: 500px;
+}
+
+.inline-note {
+	width: 470px;
+  float: right;
+  font-size: 18px;
+}
+
+.note-checkbox {
+	height: 15px;
+	width: 15px;
+}

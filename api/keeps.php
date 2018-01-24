@@ -32,7 +32,13 @@ function add_note($note) {
     include "config/db_config.php";
     $query = "INSERT INTO keeps (`note`) VALUES('".$note."')";
     if ($conn->query($query) === TRUE) {
-		$response = ['status' => 200, 'message' => 'Request processed successfully.'];
+        $query = "SELECT * from `keeps` order by `id` DESC LIMIT 1";
+        $result = $conn->query($query);
+        $response = [];
+        if($result->num_rows == 1) {
+            $row = $result->fetch_row();
+            $response = ['id' => $row[0], 'note' => $row[1], 'is_checked' => $row[2], 'created_at' => $row[3], 'updated_at' => $row[4]];
+        }
     	echo json_encode($response);
     }
     else{

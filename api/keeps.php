@@ -58,8 +58,14 @@ function update_note($id, $note, $checked=0) {
 
     $query = "UPDATE `keeps` SET `note`='".$note."', `is_checked`=".$checked." WHERE `id`=".$id;
     if ($conn->query($query) === TRUE) {
-		$response = ['status' => 200, 'message' => 'Request processed successfully.'];
-    	echo json_encode($response);
+		$query = "SELECT * from `keeps` WHERE id=".$id;
+        $result = $conn->query($query);
+        $response = [];
+        if($result->num_rows == 1) {
+            $row = $result->fetch_row();
+            $response = ['id' => $row[0], 'note' => $row[1], 'is_checked' => $row[2], 'created_at' => $row[3], 'updated_at' => $row[4]];
+        }
+        echo json_encode($response);
     }
     else{
     	$response = ['status' => 400, 'message' => 'Request does not processed successfully.'];

@@ -1,7 +1,7 @@
 <div>
 	<div class="note-input-area" v-show="authenticated">
 		<form v-on:submit.prevent="noteSubmit">
-			<input v-model="note" class="note-input" placeholder="Add some note here..." />
+			<input v-model="note" class="note-input" placeholder="Add some note here..." required/>
 		</form>
 	</div>
 	<div class="note-input-area" v-show="!authenticated">

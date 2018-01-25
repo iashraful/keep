@@ -4,8 +4,10 @@
   	  <li class="brand"><a href="/#/">Ashraful's Keep</a></li>
   	  <li>
   	  	<div class="search">
-  		    <input class="search-input" type="text" placeholder="Search.." name="search">
-  		 </div>
+          <form v-on:submit.prevent="handleSearch">
+  		      <input class="search-input" type="text" placeholder="Search.." v-model="q">
+  		    </form>
+       </div>
   	  </li>
       <li v-show="!loginState"><a class="active" href="/#/login">Login</a></li>
   	  <li v-show="loginState"><a href="/#/logout">Logout</a></li>
@@ -15,11 +17,21 @@
 </template>
 
 <script>
+import Vue from 'vue';
+window.Event = new Vue();
+
 export default {
   name: 'app',
   data() {
     return {
-      loginState: localStorage.getItem('login') == 'true' ? true : false
+      loginState: localStorage.getItem('login') == 'true' ? true : false,
+      q: ""
+    }
+  },
+  methods: {
+    handleSearch() {
+      this.$router.push({ path: '/', query: { q: this.q }});
+      Event.$emit('q-changed');
     }
   }
 }

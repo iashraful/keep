@@ -2,6 +2,8 @@
 
 
 <script>
+    
+
     export default {
         name: "Home",
         data() {
@@ -10,9 +12,25 @@
                 authenticated: localStorage.getItem('login') == 'true' ? true : false,
                 note: "",
                 notes: [],
+                query: this.$route.query.q
             }
         },
         methods: {
+            getNotes() {
+                // This will trigger when this component will mount.
+                // Here will fetch all the notes from server
+                let q = this.$route.query.q
+                const apiUrl = '/api/keeps.php?q=' + q;
+                const payload = {
+                    method: 'GET',
+                    headers: {'Content-Type': 'application/json'},
+                };
+                fetch(apiUrl, payload).then((response) => {
+                    return response.json();
+                }).then((data) => {
+                    this.notes = data;
+                })
+            },
         	noteSubmit() {
         		const apiUrl = '/api/keeps.php';
 				const payload = {
@@ -49,7 +67,6 @@
                 fetch(apiUrl, payload).then((response) => {
                     return response.json();
                 }).then((data) => {
-                	console.log(data);
                     this.updateObjectwithId(note.id, isChecked);
                 })
         	},
@@ -69,19 +86,9 @@
                 }
             }
         },
-        created() {
-        	// This will trigger when this component will mount.
-        	// Here will fetch all the notes from server
-        	const apiUrl = '/api/keeps.php';
-			const payload = {
-				method: 'GET',
-				headers: {'Content-Type': 'application/json'},
-			};
-			fetch(apiUrl, payload).then((response) => {
-				return response.json();
-			}).then((data) => {
-				this.notes = data;
-			})
+        mounted() {
+            // Call the getNotes method when it will be mounted
+            this.getNotes();
         }
     }
 </script>

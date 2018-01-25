@@ -6,8 +6,8 @@
         name: "Home",
         data() {
             return {
-            	authenticated: true,
-                // authenticated: localStorage.getItem('login') == 'true' ? true : false
+            	// authenticated: true,
+                authenticated: localStorage.getItem('login') == 'true' ? true : false,
                 note: "",
                 notes: [],
             }
@@ -49,7 +49,8 @@
                 fetch(apiUrl, payload).then((response) => {
                     return response.json();
                 }).then((data) => {
-                    this.updateObjectwithId(note.id, noteObj);
+                	console.log(data);
+                    this.updateObjectwithId(note.id, isChecked);
                 })
         	},
             getObjectwithId(id) {
@@ -59,10 +60,11 @@
                     }
                 }
             },
-            updateObjectwithId(id, obj) {
+            updateObjectwithId(id, checked) {
                 for (let n=0; n<this.notes.length; n++) {
                     if(id == this.notes[n].id) {
-                        this.notes.unshift(obj);
+                        this.notes[n].is_checked = checked;
+                        break
                     }
                 }
             }

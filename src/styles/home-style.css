@@ -33,3 +33,14 @@
 	height: 15px;
 	width: 15px;
 }
+
+.text-center {
+	text-align: center;
+}
+
+.app-title {
+	font-size: 38px;
+  margin-top: 10px;
+  font-weight: 700;
+  font-family: ubuntu;
+}

@@ -55,19 +55,19 @@ ul {
 }
 
 li {
-    float: right;
+  float: right;
 }
 .brand {
 	float: left;
 }
 .search {
+  margin-top: 5px;
 	position: absolute;
-    left: 38%;
+  left: 38%;
 }
 .search-input {
 	width: 350px;
 	padding: 7px;
-  margin-top: 8px;
   border: none;
 }
 
